@@ -14,7 +14,9 @@ class Profile(models.Model):
     biography = models.TextField(max_length=10000, blank=True, null=True)
 
     def __str__(self):
-        return "{} {}".format(self.user.first_name, self.user.last_name)
+        if self.user.first_name and self.user.last_name:
+            return "{} {}".format(self.user.first_name, self.user.last_name)
+        return self.user.username
 
 
 class Post(models.Model):
